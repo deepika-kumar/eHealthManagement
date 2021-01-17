@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ehealthsystem.SignUpController" prefHeight="800.0" prefWidth="1550" stylesheets="@Home.css">
+    <top>
+        <VBox>
+            <children>
+                <!--                Top Menu Code with Login and SignUp option-->
+                <HBox >
+                    <Region fx:id="spacer" style="-fx-background-color: #3d3f3f;" styleClass="menu-bar" HBox.hgrow="SOMETIMES"/>
+                    <MenuBar fx:id="topMenu" style="-fx-background-color: #3d3f3f;" prefHeight="35" >
+                        <padding>
+                            <Insets top = "2" right="20"></Insets>
+                        </padding>
+                        <Menu>
+                            <graphic>
+                                <Label fx:id="LoginB" text="Login"  onMouseClicked="#onLogin" />
+                            </graphic>
+                        </Menu>
+                        <Menu>
+                            <graphic>
+                                <Label fx:id="signLb" text="SignUp"  onMouseClicked="#onSignUpClick"/>
+                            </graphic>
+                        </Menu>
+                    </MenuBar>
+                </HBox>
+
+                <!--                Second Menu Code with Home and Make an Online Appointment options-->
+                <HBox>
+                    <ImageView fitHeight="70" fitWidth="70">
+                        <Image url="@file:///C:/Piku/Java/eHMS/images/icon.jpg"/>
+                    </ImageView>
+                    <Label  text=" Healthcare Management System" contentDisplay="LEFT" alignment="CENTER" prefHeight="70"
+                            style="-fx-background-color: #00BFFF; -fx-text-fill: white;-fx-font-size: 14.0 pt;-fx-font-weight: bold;"/>
+                    <Region fx:id="spacer1" style="-fx-background-color: #00BFFF;" styleClass="menu-bar" HBox.hgrow="SOMETIMES"/>
+                    <MenuBar fx:id="sMenu" style="-fx-background-color: #00BFFF;" prefHeight="70">
+                        <padding>
+                            <Insets top = "15" right="20"></Insets>
+                        </padding>
+                        <Menu>
+                            <graphic>
+                                <Label fx:id="homeLb" text="Home" onMouseClicked="#homePage"></Label>
+                            </graphic>
+                        </Menu>
+                        <Menu>
+                            <graphic>
+                                <Label fx:id="appointLb" text="Make an Online Appointment" onMouseClicked="#makeOnlineAppointment"/>
+                            </graphic>
+                        </Menu>
+                    </MenuBar>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER">
+        <Label text="Patient Signup"
+                   style="-fx-text-fill: royalblue; -fx-font-size: 30.0 pt;-fx-font-weight: bold;"></Label>
+        <StackPane>
+            <Rectangle width="850" height="550" stroke="#00BFFF" fill="white"></Rectangle>
+            <GridPane fx:id="gPane" alignment="CENTER" hgap="50" vgap="20"  >
+                <TextField fx:id="firstName" promptText="First Name" focusTraversable="false" GridPane.columnIndex="0"
+                           GridPane.rowIndex="0" prefWidth="300" prefHeight="40" onKeyReleased="#validateFirstName"/>
+                <Label fx:id="errorFN" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-text-fill:red" />
+                <TextField fx:id="lastName" promptText="Last Name" focusTraversable="false" GridPane.columnIndex="2"
+                           GridPane.rowIndex="0" prefWidth="300" prefHeight="40" onKeyReleased="#validatelastName"/>
+                <Label fx:id="errorLN" GridPane.columnIndex="2" GridPane.rowIndex="1" style="-fx-text-fill:red"/>
+                <TextField fx:id="email" promptText="Email Address" focusTraversable="false" GridPane.columnIndex="0"
+                           GridPane.rowIndex="2" prefWidth="300" prefHeight="40" onKeyReleased="#validateEMail" />
+                <Label fx:id="errorEM" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-text-fill:red" />
+                <ComboBox fx:id="gender" promptText="Select Gender" focusTraversable="false" GridPane.columnIndex="2"
+                           GridPane.rowIndex="2"  prefWidth="300" prefHeight="40">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Male"/>
+                            <String fx:value="Female"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Label fx:id="errorGN" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-text-fill:red" />
+                <PasswordField fx:id="pwd1" promptText="Enter Password" focusTraversable="false" GridPane.columnIndex="0"
+                           GridPane.rowIndex="4" prefWidth="300" prefHeight="40"  onKeyReleased="#validatePassword"/>
+                <Label fx:id="errorP1" GridPane.columnIndex="0" GridPane.rowIndex="5" style="-fx-text-fill:red" />
+                <PasswordField fx:id="pwd2" promptText="Re-enter Password" focusTraversable="false" GridPane.columnIndex="2"
+                           GridPane.rowIndex="4" prefWidth="300" prefHeight="40" onKeyReleased="#validateRePassword"/>
+                <Label fx:id="errorP2" GridPane.columnIndex="2" GridPane.rowIndex="5" style="-fx-text-fill:red" />
+                <TextField fx:id="mob" promptText="Mobile Number (XXX-XXX-XXXX)" focusTraversable="false" GridPane.columnIndex="0"
+                           GridPane.rowIndex="6" prefWidth="300" prefHeight="40" onKeyReleased="#validateMobile"/>
+                <Label fx:id="errorMOB" GridPane.columnIndex="0" GridPane.rowIndex="7" style="-fx-text-fill:red" />
+                <DatePicker fx:id="dob" promptText="Date of Birth" focusTraversable="false" GridPane.columnIndex="2"
+                           GridPane.rowIndex="6" prefWidth="300" prefHeight="40" editable="false" onAction="#validateDOB" />
+                <Label fx:id="errorDOB" GridPane.columnIndex="2" GridPane.rowIndex="7" style="-fx-text-fill:red" />
+                <Button fx:id="bSignUp" text="Signup" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                           GridPane.rowIndex="8" disable="true" style="-fx-background-color: royalblue;-fx-font-size: 14.0 pt;-fx-font-weight:
+                            bold;-fx-text-fill:White" onAction="#onSignUpButton"/>
+                <Label fx:id="errorBtn" GridPane.columnIndex="1" GridPane.rowIndex="9" style="-fx-text-fill:red" />
+            </GridPane>
+        </StackPane>
+        </VBox>
+    </center>
+</BorderPane>

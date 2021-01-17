@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<!--<?import javafx.scene.control.skin.TabPaneSkin.TabHeaderArea?>
+<?import javafx.scene.control.skin.TitledPaneSkin.TitleRegion?>-->
+<BorderPane fx:id="appointMainPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ehealthsystem.OnlineAppointmentController" prefHeight="800.0" prefWidth="1550" stylesheets="@Home.css" >
+        <top>
+            <VBox>
+                <children>
+                    <!--                Top Menu Code with Login and SignUp option-->
+                    <HBox >
+                        <Region fx:id="spacer" style="-fx-background-color: #3d3f3f;" styleClass="menu-bar" HBox.hgrow="SOMETIMES"></Region>
+                        <MenuBar fx:id="topMenu" style="-fx-background-color: #3d3f3f;" prefHeight="35" >
+                            <padding>
+                                <Insets top = "2" right="20"></Insets>
+                            </padding>
+                            <Menu>
+                                <graphic>
+                                    <Label fx:id="patientName"   />
+                                </graphic>
+                            </Menu>
+                            <Menu>
+                                <graphic>
+                                    <Label fx:id="logInOut"  />
+                                </graphic>
+                            </Menu>
+                            <Menu>
+                                <graphic>
+                                    <Label fx:id="signLb" text="SignUp"  onMouseClicked="#onSignUpClick"/>
+                                </graphic>
+                            </Menu>
+                        </MenuBar>
+                    </HBox>
+
+                    <!--                Second Menu Code with Home and Make an Online Appointment options-->
+                    <HBox>
+                        <ImageView fitHeight="70" fitWidth="70">
+                            <Image url="@file:///C:/Piku/Java/eHMS/images/icon.jpg">
+                            </Image>
+                        </ImageView>
+                        <Label  text=" Healthcare Management System" contentDisplay="LEFT" alignment="CENTER" prefHeight="70"
+                                style="-fx-background-color: #00BFFF; -fx-text-fill: white;-fx-font-size: 14.0 pt;-fx-font-weight: bold;">
+                        </Label>
+                        <Region fx:id="spacer1" style="-fx-background-color: #00BFFF;" styleClass="menu-bar" HBox.hgrow="SOMETIMES"></Region>
+                        <MenuBar fx:id="sMenu" style="-fx-background-color: #00BFFF;" prefHeight="70">
+                            <padding>
+                                <Insets top = "15" right="20"></Insets>
+                            </padding>
+                            <Menu>
+                                <graphic>
+                                    <Label fx:id="homeLb" text="Home" onMouseClicked="#homePage"></Label>
+                                </graphic>
+                            </Menu>
+                            <Menu>
+                                <graphic>
+                                    <Label fx:id="appointLb" text="Make an Online Appointment" ></Label>
+                                </graphic>
+                            </Menu>
+                        </MenuBar>
+                    </HBox>
+                </children>
+
+            </VBox>
+
+        </top>
+    <left>
+        <StackPane>
+            <padding>
+                <Insets left ="100" top = "70"/>
+            </padding>
+            <Rectangle width="250" height="470" layoutX="50" stroke="grey" fill="white"></Rectangle>
+            <VBox alignment="CENTER" spacing="20">
+                <ImageView fitHeight="70" fitWidth="70">
+                    <Image url="@file:///C:/Piku/Java/eHMS/images/8.jpg">
+                    </Image>
+                </ImageView>
+                <TextField fx:id="dName" promptText="Doctor's Name" maxWidth="200"  prefHeight="40" focusTraversable="false"/>
+                <ComboBox fx:id="speciality" promptText="General Physician" focusTraversable="false"  maxWidth="200" prefHeight="40">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="General Physician"/>
+                            <String fx:value="General Pediatrician"/>
+                            <String fx:value="Cardiologist"/>
+                            <String fx:value="Gynecologist"/>
+                            <String fx:value="Neurologist"/>
+                            <String fx:value="Dentist"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <TextField fx:id="state" promptText="State" maxWidth="200"  prefHeight="40" focusTraversable="false"/>
+                <ComboBox fx:id="gender" promptText="Select Gender" focusTraversable="false"  maxWidth="200" prefHeight="40">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Male"/>
+                            <String fx:value="Female"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Button fx:id="searchDoc" text = "Search Doctor" maxWidth="200" prefHeight="40" style="-fx-background-color: royalblue;-fx-font-size: 14.0 pt;-fx-font-weight:
+                            bold;-fx-text-fill:White" onAction="#searchDoctor"/>
+            </VBox>
+         </StackPane>
+    </left>
+    <center>
+        <VBox>
+            <Label text="ONLINE APPOINTMENT AND CONSULTATIONS WITH LEADING SPECIALISTS"  style="-fx-font-size: 20.0 pt;-fx-font-weight:bold;-fx-text-fill:#0000ff;">
+                <padding>
+                    <Insets left ="100" top = "100" />
+                </padding>
+            </Label>
+            <FlowPane fx:id="dPane"  hgap="43" vgap="20" >
+                <padding>
+                    <Insets top = "20" left = "50"></Insets>
+                </padding>
+                <!--            <Label fx:id="test" text="Online Consultation" style="-fx-font-size: 20.0 pt;-fx-font-weight:bold;-fx-text-fill:Blue;"/>-->
+            </FlowPane>
+            <FlowPane fx:id="doctorDetailPane" visible="false">
+                <padding>
+                    <Insets top = "50" left = "50"></Insets>
+                </padding>
+                <Rectangle fx:id="mainRect" width="950" height="250" layoutX="50" stroke="#00BFFF" fill="white"></Rectangle>
+            </FlowPane>
+
+        </VBox>
+
+    </center>
+</BorderPane>
+

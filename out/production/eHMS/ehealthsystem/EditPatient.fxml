@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.Line?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ehealthsystem.EditPatientController" prefHeight="800.0" prefWidth="1550" stylesheets="@Home.css">
+    <top>
+        <VBox>
+            <children>
+                <!--                Top Menu Code with Login and SignUp option-->
+                <HBox >
+                    <Region fx:id="spacer" style="-fx-background-color: #3d3f3f;" styleClass="menu-bar" HBox.hgrow="SOMETIMES"></Region>
+                    <MenuBar fx:id="topMenu" style="-fx-background-color: #3d3f3f;" prefHeight="35" >
+                        <padding>
+                            <Insets top = "2" right="20"></Insets>
+                        </padding>
+                        <Menu>
+                            <graphic>
+                                <Label fx:id="patientName"  />
+                            </graphic>
+                        </Menu>
+                        <Menu>
+                            <graphic>
+                                <Label fx:id="LogoutB" text="Logout"   onMouseClicked="#onLogut"   />
+                            </graphic>
+                        </Menu>
+                    </MenuBar>
+                </HBox>
+
+                <!--                Second Menu Code with Home and Make an Online Appointment options-->
+                <HBox>
+                    <ImageView fitHeight="70" fitWidth="70">
+                        <Image url="@file:///C:/Piku/Java/eHMS/images/icon.jpg">
+                        </Image>
+                    </ImageView>
+                    <Label  text=" Healthcare Management System" contentDisplay="LEFT" alignment="CENTER" prefHeight="70"
+                            style="-fx-background-color: #00BFFF; -fx-text-fill: white;-fx-font-size: 14.0 pt;-fx-font-weight: bold;">
+                    </Label>
+                    <Region fx:id="spacer1" style="-fx-background-color: #00BFFF;" styleClass="menu-bar" HBox.hgrow="SOMETIMES"></Region>
+                    <MenuBar fx:id="sMenu" style="-fx-background-color: #00BFFF;" prefHeight="70">
+                        <padding>
+                            <Insets top = "15" right="20"></Insets>
+                        </padding>
+                        <Menu>
+                            <graphic>
+                                <Label fx:id="homeLb" text="Home" onMouseClicked="#homePage"></Label>
+                            </graphic>
+                        </Menu>
+                        <Menu>
+                            <graphic>
+                                <Label fx:id="appointLb" text="Make an Online Appointment" onMouseClicked="#makeOnlineAppointment" ></Label>
+                            </graphic>
+                        </Menu>
+                    </MenuBar>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER">
+            <padding>
+                <Insets top="20" ></Insets>
+            </padding>
+            <Label  fx:id="pName" style="-fx-text-fill: royalblue; -fx-font-size: 30.0 pt;-fx-font-weight: bold;" />
+            <VBox fx:id="flowPane" spacing="20" alignment="CENTER">
+                <padding>
+                    <Insets top="40" left="100"></Insets>
+                </padding>
+
+            </VBox>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox fx:id="bottomPane"></HBox>
+    </bottom>
+
+</BorderPane>
